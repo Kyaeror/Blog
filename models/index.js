@@ -5,7 +5,7 @@ Post.belongsTo(User, {
     foreignKey: `creator_id`
 })
 User.hasMany(Post, {
-    foreignKey: `creator`
+    foreignKey: `creator_id`
 })
 
 module.exports = {

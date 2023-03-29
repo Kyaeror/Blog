@@ -15,6 +15,11 @@ const postData = [
         creator_id: 1,
         post_name: `Poem`,
         message: `Roses are red violets are blue, I hate this assignment, how about you?`
+    },
+    {
+        creator_id: 2,
+        post_name: `test`,
+        message: `testing this terrible assignment`
     }
 ]
 const seedPost = () => Post.bulkCreate(postData)
