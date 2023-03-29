@@ -11,7 +11,7 @@ User.init(
             autoIncrement: true
         },
         name: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             allowNull: false
         },
         email: {
@@ -28,7 +28,7 @@ User.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'category',
+        modelName: 'user',
     }
 )
 

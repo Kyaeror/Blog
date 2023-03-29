@@ -7,15 +7,18 @@ Post.init(
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
-        creator: {
-            type: DataTypes.STRING(50),
-            allowNull: false
+        creator_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: `user` ,
+                key: `id`
+            }
         },
         post_name: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             allowNull: false
         },
         message: {
@@ -23,7 +26,7 @@ Post.init(
             allowNull: false,
         },
         time: {
-            type: DataTypes.TIME,
+            type: DataTypes.DATE,
             defaultValue: DataTypes.NOW,
             allowNull: false
         }
