@@ -1,15 +1,19 @@
-app.get(`/`, (req, res) => {
+const router = require(`express`).Router()
+
+router.get(`/`, (req, res) => {
     res.render(`homepage`)
 })
-app.get(`/login`, (req, res) => {
+router.get(`/login`, (req, res) => {
     res.render(`login`)
 })
-app.get(`/register`, (req, res) => {
+router.get(`/register`, (req, res) => {
     res.render(`register`)
 })
-app.get(`/createBlog`, (req, res) => {
+router.get(`/createBlog`, (req, res) => {
     res.render(`createBlog`)
 })
-app.get(`/dashboard`, (req, res) => {
+router.get(`/dashboard`, (req, res) => {
     res.render(`dashboard`)
 })
+
+module.exports = router
