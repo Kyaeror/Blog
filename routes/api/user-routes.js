@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {User, Post} = require(`../../models`)
+const connection = require(`../../config/connection`)
 
 router.get(`/`, (req, res) => {
     User.findAll({
@@ -26,12 +27,18 @@ router.get(`/:id`, (req, res)=>{
     })
     .then((data) => res.json(data))
 })
-router.post(`/` , (req , res) => {
-    User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
+router.post('/login', async (req, res) => {
+    const {email, password} = req.body
+    connection.query(`SELECT * FROM blog_db.user WHERE email='${email}' AND password='${password}'`, 
+    (err, result)=> {
+        if (err){
+            res.status(500).send(`Internal server error`)
+        }else if (result.length === 0){
+            res.render('login', { error: 'Incorrect email or password' })
+        }else {
+            res.render('/')
+        }
     })
-    .then((data)=> res.json(data))
 })
+
 module.exports = router
